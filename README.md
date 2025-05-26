@@ -1,6 +1,19 @@
-# upload-interop/impl
+# Upload-Interop Implementation Package
 
 [![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg?style=flat-square)](https://github.com/php-pds/skeleton)
 [![PDS Composer Script Names](https://img.shields.io/badge/pds-composer--script--names-blue?style=flat-square)](https://github.com/php-pds/composer-script-names)
 
-The upload-interop/impl project.
+Reference implementations of [upload-interop/interface][].
+
+## Installation
+
+Install this package via [Composer][]:
+
+```
+$ composer require upload-interop/impl
+```
+
+* * *
+
+[upload-interop/interface]: https://packagist.org/packages/upload-interop/interface
+[Composer]: https://getcomposer.org
