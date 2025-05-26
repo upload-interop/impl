@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace UploadInterop\Impl\Readonly;
+namespace UploadInterop\Impl;
 
 use UploadInterop\Impl\UploadFactoryMethods;
 use UploadInterop\Interface\UploadStruct;
 use UploadInterop\Interface\UploadStructFactory;
 use UploadInterop\Interface\UploadFilesParser;
 
-class ReadonlyUploadFactory implements UploadFilesParser, UploadStructFactory
+class UploadFactory implements UploadFilesParser, UploadStructFactory
 {
     use UploadFactoryMethods;
 
     /**
      * @inheritdoc
-     * @return ReadonlyUpload
+     * @return Upload
      */
     public function newUpload(
         string $tmp_name,
@@ -25,7 +25,7 @@ class ReadonlyUploadFactory implements UploadFilesParser, UploadStructFactory
         ?int $size = null,
     ) : UploadStruct
     {
-        return new ReadonlyUpload(
+        return new Upload(
             $tmp_name,
             $error,
             $name,

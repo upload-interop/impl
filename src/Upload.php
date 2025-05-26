@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace UploadInterop\Impl\Readonly;
+namespace UploadInterop\Impl;
 
 use UploadInterop\Interface\UploadStruct;
 
-class ReadonlyUpload implements UploadStruct
+class Upload implements UploadStruct
 {
     public function __construct(
         readonly public string $tmp_name,

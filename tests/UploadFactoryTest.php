@@ -1,20 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace UploadInterop\Impl\Readonly;
+namespace UploadInterop\Impl;
 
 use UploadInterop\Interface\UploadFilesParser;
 use UploadInterop\Interface\UploadStruct;
 use UploadInterop\Interface\UploadStructFactory;
 
-class ReadonlyUploadFactoryTest extends \PHPUnit\Framework\TestCase
+class UploadFactoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @return ReadonlyUploadFactory
+     * @return UploadFactory
      */
     public function newUploadFactory() : UploadStructFactory
     {
-        return new ReadonlyUploadFactory();
+        return new UploadFactory();
     }
 
     public function testUploadsArrayFilesFromItem() : void
