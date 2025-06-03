@@ -23,7 +23,7 @@ class UploadFactoryTest extends \PHPUnit\Framework\TestCase
 
         $actual = $this
             ->newUploadFactory()
-            ->parseUploadFiles(
+            ->newUploadsFromFiles(
                 files: [
                     'photo' => [
                         'tmp_name' => $tmp_name,
@@ -42,7 +42,7 @@ class UploadFactoryTest extends \PHPUnit\Framework\TestCase
         /** @var array{profile: array{details: array{photo: UploadStruct}}} $actual */
         $actual = $this
             ->newUploadFactory()
-            ->parseUploadFiles(
+            ->newUploadsFromFiles(
                 files: [
                     'profile' => [
                         'details' => [
@@ -69,7 +69,7 @@ class UploadFactoryTest extends \PHPUnit\Framework\TestCase
         /** @var array{team: array{people: array{photos: UploadStruct[]}}} $actual */
         $actual = $this
             ->newUploadFactory()
-            ->parseUploadFiles(
+            ->newUploadsFromFiles(
                 files: [
                     'team' => [
                         'people' => [
@@ -121,7 +121,7 @@ class UploadFactoryTest extends \PHPUnit\Framework\TestCase
 
         /** @var array{alter-egos: array<int, array{photo: UploadStruct[]}>} $actual */
         $actual = $this->newUploadFactory()
-            ->parseUploadFiles(
+            ->newUploadsFromFiles(
                 files: [
                     'alter-egos' => [
                         'tmp_name' => [

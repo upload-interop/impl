@@ -39,8 +39,7 @@ class UploadFactory implements UploadStructFactory
     }
 
     /**
-     * @param files_array|files_group_array|files_item_array $files
-     * @return uploads_array
+     * @inheritdoc
      */
     public function newUploadsFromFiles(array $files) : array
     {
@@ -48,7 +47,7 @@ class UploadFactory implements UploadStructFactory
 
         /** @var files_item_array|files_group_array|files_array $value */
         foreach ($files as $field => $value) {
-            $uploads[$field] = $this->parseFiles($value);
+            $uploads[$field] = $this->parseFilesValue($value);
         }
 
         /** @var uploads_array $uploads */
@@ -59,7 +58,7 @@ class UploadFactory implements UploadStructFactory
      * @param files_array|files_group_array|files_item_array $value
      * @return UploadStruct|uploads_array
      */
-    protected function parseFiles(array $value) : UploadStruct|array
+    protected function parseFilesValue(array $value) : UploadStruct|array
     {
         if (is_string($value['tmp_name'] ?? null)) {
             /** @var files_item_array $value */
