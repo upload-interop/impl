@@ -8,10 +8,10 @@ use UploadInterop\Interface\UploadStructFactory;
 use UploadInterop\Interface\UploadTypeAliases;
 
 /**
- * @phpstan-import-type files_array from UploadTypeAliases
- * @phpstan-import-type files_group_array from UploadTypeAliases
- * @phpstan-import-type files_item_array from UploadTypeAliases
- * @phpstan-import-type uploads_array from UploadTypeAliases
+ * @phpstan-import-type upload_files_array from UploadTypeAliases
+ * @phpstan-import-type upload_files_group_array from UploadTypeAliases
+ * @phpstan-import-type upload_files_item_array from UploadTypeAliases
+ * @phpstan-import-type upload_structs_array from UploadTypeAliases
  */
 class UploadFactory implements UploadStructFactory
 {
@@ -45,38 +45,38 @@ class UploadFactory implements UploadStructFactory
     {
         $uploads = [];
 
-        /** @var files_item_array|files_group_array|files_array $value */
+        /** @var upload_files_item_array|upload_files_group_array|upload_files_array $value */
         foreach ($files as $field => $value) {
             $uploads[$field] = $this->parseFilesValue($value);
         }
 
-        /** @var uploads_array $uploads */
+        /** @var upload_structs_array $uploads */
         return $uploads;
     }
 
     /**
-     * @param files_array|files_group_array|files_item_array $value
-     * @return UploadStruct|uploads_array
+     * @param upload_files_array|upload_files_group_array|upload_files_item_array $value
+     * @return UploadStruct|upload_structs_array
      */
     protected function parseFilesValue(array $value) : UploadStruct|array
     {
         if (is_string($value['tmp_name'] ?? null)) {
-            /** @var files_item_array $value */
+            /** @var upload_files_item_array $value */
             return $this->newUpload(...$value);
         }
 
         if (is_array($value['tmp_name'] ?? null)) {
-            /** @var files_group_array $value */
+            /** @var upload_files_group_array $value */
             return $this->parseFilesGroup($value);
         }
 
-        /** @var files_array $value */
+        /** @var upload_files_array $value */
         return $this->newUploadsFromFiles($value);
     }
 
     /**
-     * @param files_group_array $group
-     * @return uploads_array
+     * @param upload_files_group_array $group
+     * @return upload_structs_array
      */
     protected function parseFilesGroup(array $group) : array
     {
@@ -91,7 +91,7 @@ class UploadFactory implements UploadStructFactory
             $files[$key]['size'] = $group['size'][$key] ?? null;
         }
 
-        /** @var files_array $files */
+        /** @var upload_files_array $files */
         return $this->newUploadsFromFiles($files);
     }
 }
